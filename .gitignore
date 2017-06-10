@@ -1,0 +1,7 @@
+node_modules/
+bower_components/
+www/build/dev/
+*.log
+.vscode/
+*.html
+*.css

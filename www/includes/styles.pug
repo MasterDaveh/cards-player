@@ -1,0 +1,16 @@
+link(rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons")
+
+- if ( env === 'DEV' ) {
+  
+  link( href="./build/dev/css/main.css" rel="stylesheet" )
+
+- } else if ( env === 'PROD' ) {
+
+  link( href="./music-search/build/prod/{APPNAME}.min.css" rel="stylesheet" )
+  
+- } else {
+
+  script( type="text/javascript" )
+    | alert(`Environment configuration error. Cannot resolve ${ env } environment`);
+
+- }

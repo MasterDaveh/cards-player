@@ -1,0 +1,35 @@
+// ----------------------- MIXINS
+@mixin font($opts)
+  font:
+    @if map-has-key($opts, s) 
+      size: map-get($opts, s)
+    @if map-has-key($opts, w) 
+      weight: map-get($opts, w)
+  @if map-has-key($opts, c) 
+    color: map-get($opts, c)
+  @if map-has-key($opts, lh)
+    line-height: map-get($opts, lh)
+
+@mixin size( $val )
+  height: $val
+  width: $val
+
+// ----------------------- SIZING
+$baseline: 16px
+$base-lheight: #{ $baseline * 1.6 }
+
+$phones-to: 450px
+$tablets-from: #{ $phones-to + 1 }
+$tablets-to: 990px
+
+// -----------------------  COLORS
+
+
+// ----------------------- EASING FUNCTIONS
+$bezier:              cubic-bezier(0.4, 0.0, 0.2, 1)
+$bezier_out:          cubic-bezier(0.4, 0.0, 0.6, 1)
+$bezier_in:           cubic-bezier(0.0, 0.0, 0.2, 1)
+$bezier_bounce:       cubic-bezier(0.77,-0.89, 0.29, 0.88)
+$bezier_bounce2:      cubic-bezier(0, 0.47, 0.32, 1.97)
+
+// ----------------------- UTILITY CLASSES
