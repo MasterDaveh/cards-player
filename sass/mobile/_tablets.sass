@@ -1,4 +1,4 @@
-@mixin responsive
+@mixin responsive-home
   &--results
     flex-direction: column
 
@@ -22,6 +22,12 @@
         margin: 0
         padding: 0 #{ $baseline * 2 }
 
+@mixin responsive-toast
+  max-width: 70%
+
 @media screen and (min-width: $tablets-from) and (max-width: $tablets-to)
   .home
-    +responsive
+    +responsive-home
+  
+  .toast
+    +responsive-toast

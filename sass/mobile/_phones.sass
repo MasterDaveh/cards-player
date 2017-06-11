@@ -1,6 +1,6 @@
 @media screen and (max-width: $phones-to)
   .home
-    +responsive
+    +responsive-home
 
     &--search
       padding: #{ $baseline * 10 } $baseline $baseline
@@ -44,3 +44,12 @@
             width: 100%
             height: #{ $baseline * 12 }
             margin-bottom: #{ $baseline * 1 }
+
+  .toast
+    +responsive-toast
+
+    bottom: 0
+    left: 0
+    width: 100%
+    max-width: none
+    border-radius: 0
