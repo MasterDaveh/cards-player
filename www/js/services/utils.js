@@ -42,3 +42,12 @@ utils.factory('lstorage', function () {
   }
 
 });
+
+utils.factory('strings', function() {
+  const replaceAt = (string, index, replacement) => {
+    return string.slice(0, index) + replacement + string.slice(index + 1);
+  }
+
+  return { replaceAt }
+  
+})

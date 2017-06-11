@@ -1,6 +1,6 @@
-angular.module('home', ['spotifySrvc', 'ngAudio'])
+angular.module('home', ['spotifySrvc', 'ngAudio', 'toastHelper', 'utils'])
 
-.controller('homeCtrl', function($scope, $interval, spotify, ngAudio) {
+.controller('homeCtrl', function($scope, $interval, spotify, ngAudio, toastHelper, strings) {
   $scope.songs = [];
   $scope.query = '';
   $scope.artist = { 
@@ -78,7 +78,15 @@ angular.module('home', ['spotifySrvc', 'ngAudio'])
 
   $scope.play = ( track ) => {
     if( track.playing ) return;
+    let artists = track.artists[0].name;
+    if( track.artists.length > 1 ){
+      artists = track.artists.map(x => x.name).join(', ');
+      artists = strings.replaceAt(artists, artists.lastIndexOf(', '), ' and' );
+    }    
     
+    const msg = `Playing "${ track.name }" by ${ artists }`;
+
+    toastHelper.show(msg);
     stopAll();
     songs[track.id].play();
     track.playing = true;
