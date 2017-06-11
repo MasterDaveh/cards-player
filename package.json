@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "A cards based music player",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MasterDaveh/cards-player.git"
+  },
+  "homepage": "https://masterdaveh.github.io/cards-player",
   "author": "Davide Vico",
   "license": "MIT",
   "keywords": [
