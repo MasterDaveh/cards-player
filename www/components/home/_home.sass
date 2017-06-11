@@ -13,8 +13,6 @@
 
 .search
 
-  &--bar
-
   &--label
     margin-bottom: #{ $baseline / 4 }
     +font(( s: $baseline, c: white, w: 400 ))
@@ -22,7 +20,7 @@
   &--input
     input
       +font(( s: #{ $baseline * 4.5 }, c: white, w: 900, f: 'Lato' ))
-
+      width: 80%
       background: transparent
       outline: none
       border: none
@@ -30,23 +28,32 @@
 .results
 
   &--tracks
-    max-width: 55%
+    max-width: 65%
+    height: 100%
 
     display: flex
     flex-wrap: wrap
     padding-left: #{ $baseline * 2 }
 
-  &--artist
-    width: #{ $baseline * 35 }
-    min-height: #{ $baseline * 35 }
-    height: 100%
-    background: white
+  &--side
     margin-right: #{ $baseline * 2 }
+
+  &--card
+    width: #{ $baseline * 35 }
+    background: white
     border-radius: #{ $baseline / 4 }
     overflow: hidden
+    box-shadow: 2px 2px 10px 5px rgba(0,0,0, 0.2)
 
+    &:not(:first-child)
+      margin-top: #{ $baseline * 2 }
+
+    &:last-child
+      margin-bottom: #{ $baseline * 2 }
+    
     &__animate-up
       animation: up 330ms $bezier_in 
+        delay: 200ms
 
       @keyframes up
         from
@@ -55,10 +62,11 @@
         to
           transform: translateY(0)
           opacity: 1
-        
+
     &__animate-updown
       animation: updown 450ms $bezier_in
-    
+        delay: 200ms
+
     @keyframes updown
       0%, 100%
         transform: translateY(0)
@@ -67,15 +75,100 @@
         transform: translateY(#{ $baseline * 3.2 })
         opacity: 0
 
-.result
-  +size(#{ $baseline * 15 })
-  border-radius: #{ $baseline / 4 }
+  &--artist
+    min-height: #{ $baseline * 35 }
+
+.preview
+  width: #{ $baseline * 15 }
+  height: #{ $baseline * 25 }
   color: white
-  background: pink
+  border-radius: #{ $baseline / 4 }
+  overflow: hidden
   margin:
     right: $baseline
     bottom: $baseline
-  padding: $baseline
+  
+  animation-delay: 0ms
+  box-shadow: 2px 2px 10px 5px rgba(0,0,0, 0.2)
+  
+  &--section
+    display: flex
+    margin:
+      left: $baseline
+      right: $baseline
+    
+    &:nth-child(2)
+      margin:
+        left: #{ $baseline - 4 }
+
+    &:nth-child(3)
+      margin:
+        bottom: $baseline
+
+  &--clip
+    +size(100%)
+    position: relative
+
+    cursor: pointer
+
+    background:
+      size: cover
+      repeat: no-repeat
+      position: center center
+
+    display: flex
+    flex-direction: column
+    justify-content: flex-end
+
+  &--overlay
+    position: absolute
+    top: 0
+    right: 0
+    left: 0
+    bottom: 0
+    z-index: 0
+
+    transition: background 330ms $bezier
+    background: rgba(black, 0.7)
+
+  &--action
+    cursor: pointer
+    position: relative
+    z-index: 1
+
+    &:first-child
+      margin-right: - $baseline
+
+    i.material-icons
+      +font(( s: #{ $baseline * 5 }, c: white ))
+
+      transition: all 330ms $bezier_bounce2
+      opacity: 0.7
+      transform: scale(0.6)
+
+      &.action__active
+        opacity: 1
+        transform: scale(1)
+
+  &--progress
+    position: absolute
+    bottom: 0
+    left: -100%
+    height: #{ $baseline / 2 }
+    width: 100%
+    background: $green
+
+    transition: transform 100ms linear
+
+  &--title
+    +font(( s: #{ $baseline * 1.5 }, c: white, w: 300 ))
+    position: relative
+    z-index: 1
+
+    height: #{ $baseline * 2 }
+    overflow: hidden
+    text-overflow: ellipsis
+    white-space: nowrap
 
 .extra-result
   width: #{ $baseline * 15 }
@@ -84,6 +177,7 @@
     bottom: $baseline
 
 .artist
+
   &--pic
     width: 100%
     height: #{ $baseline * 20 }

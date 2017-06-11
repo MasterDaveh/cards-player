@@ -1,2 +1,46 @@
 @media screen and (max-width: $phones-to)
-  .test
+  .home
+    +responsive
+
+    &--search
+      padding: #{ $baseline * 10 } $baseline $baseline
+
+      .search
+
+        &--input
+          input
+            font-size: #{ $baseline * 3 }
+            width: 100%
+    
+    &--results
+      margin-top: #{ $baseline * 2 }
+
+      .results
+        &--side
+          padding: 0 $baseline
+
+          .artist
+            &--pic
+              height: #{ $baseline * 10 }
+            
+            &--name
+              margin: $baseline #{ $baseline / 2 } 0
+              font-size: #{ $baseline * 3 }
+            
+            &--flw
+              font-size: #{ $baseline * 1.5 }
+              margin: 0 $baseline $baseline
+            
+            &--popularity
+              padding: #{ $baseline / 2 } $baseline
+        
+        &--card
+          min-height: #{ $baseline * 18 }
+        
+        &--tracks
+          padding: 0 $baseline
+
+          .preview
+            width: 100%
+            height: #{ $baseline * 12 }
+            margin-bottom: #{ $baseline * 1 }

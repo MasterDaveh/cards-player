@@ -11,27 +11,47 @@
           )
   .home--results
     .results--tracks
-      .result( 
+      .preview( 
         ng-repeat="song in songs"
-        ng-class="{'results--artist__animate-updown': searching && searchesCount > 1, 'results--artist__animate-up': searchesCount === 1}"
-      ) {{ song.name }}
-      .extra-result
-      .extra-result
-      .extra-result
-    .results--artist(
-      ng-if="searchesCount >= 1"
-      ng-class="{'results--artist__animate-updown': searching && searchesCount > 1, 'results--artist__animate-up': searchesCount === 1}"
-    )
-      .artist--pic(
-        style="background-image: url( {{ getPic(artist) }} )"
-        ng-attr-style="background-image: url( {{ getPic(artist) }} )"
+        ng-class="{'results--card__animate-updown': !searching && searchesCount > 1, 'results--card__animate-up': searchesCount === 1}"
       )
-        .pic--overlay
-      .artist--name {{ artist.name }}
-      .artist--flw {{ getFollowers(artist.followers.total) }} followers
-      .artist--popularity
-        .data--bar(
-          style="transform: translateX( {{ artist.popularity }}% )"
-          ng-attr-style="transform: translateX( {{ artist.popularity }}% )"
+        .preview--clip(
+          style="background-image: url( {{ ::getTrackPic(song) }} )"
+          ng-attr-style="background-image: url( {{ ::getTrackPic(song) }} )"
         )
-        .data--block {{ artist.popularity }}% popularity
+          .preview--overlay
+          .preview--section
+            .preview--action( 
+              ng-click="play(song)"
+            )
+              i.material-icons( ng-class="{'action__active': !song.playing}" ) play_circle_outline
+            .preview--action( 
+              ng-click="pause(song)"
+            )
+              i.material-icons( ng-class="{'action__active': song.playing}" ) pause_circle_outline
+          .preview--section
+            .preview--title {{ song.name }}
+          .preview--progress(
+            style="transform: translateX( {{song.progress}}% )"
+          )
+      .extra-result
+      .extra-result
+      .extra-result
+    .results--side
+      .results--artist.results--card(
+        ng-if="searchesCount >= 1"
+        ng-class="{'results--card__animate-updown': !searching && searchesCount > 1, 'results--card__animate-up': searchesCount === 1}"
+      )
+        .artist--pic(
+          style="background-image: url( {{ getPic(artist) }} )"
+          ng-attr-style="background-image: url( {{ getPic(artist) }} )"
+        )
+          .pic--overlay
+        .artist--name {{ artist.name }}
+        .artist--flw {{ getFollowers(artist.followers.total) }} followers
+        .artist--popularity
+          .data--bar(
+            style="transform: translateX( {{ artist.popularity }}% )"
+            ng-attr-style="transform: translateX( {{ artist.popularity }}% )"
+          )
+          .data--block {{ artist.popularity }}% popularity

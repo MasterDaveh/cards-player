@@ -1,2 +1,27 @@
+@mixin responsive
+  &--results
+    flex-direction: column
+
+    .results
+      &--tracks
+        order: 1
+        justify-content: space-between
+
+        max-width: none
+        padding: 0 #{ $baseline * 2 }
+
+        .preview
+          margin:
+            bottom: #{ $baseline * 3 }
+            right: 0
+
+      &--card
+        width: 100%
+
+      &--side
+        margin: 0
+        padding: 0 #{ $baseline * 2 }
+
 @media screen and (min-width: $tablets-from) and (max-width: $tablets-to)
-  .test
+  .home
+    +responsive
