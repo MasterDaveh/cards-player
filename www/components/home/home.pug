@@ -1,2 +1,37 @@
 .home( ng-controller="homeCtrl" )
-  .test {{ msg }}
+  .home--search
+    .search
+      .search--bar
+        .search--label Search for them tracks
+        .search--input
+          input( 
+            placeholder="Start typing..." 
+            on-enter="search"
+            ng-model="query"
+          )
+  .home--results
+    .results--tracks
+      .result( 
+        ng-repeat="song in songs"
+        ng-class="{'results--artist__animate-updown': searching && searchesCount > 1, 'results--artist__animate-up': searchesCount === 1}"
+      ) {{ song.name }}
+      .extra-result
+      .extra-result
+      .extra-result
+    .results--artist(
+      ng-if="searchesCount >= 1"
+      ng-class="{'results--artist__animate-updown': searching && searchesCount > 1, 'results--artist__animate-up': searchesCount === 1}"
+    )
+      .artist--pic(
+        style="background-image: url( {{ getPic(artist) }} )"
+        ng-attr-style="background-image: url( {{ getPic(artist) }} )"
+      )
+        .pic--overlay
+      .artist--name {{ artist.name }}
+      .artist--flw {{ getFollowers(artist.followers.total) }} followers
+      .artist--popularity
+        .data--bar(
+          style="transform: translateX( {{ artist.popularity }}% )"
+          ng-attr-style="transform: translateX( {{ artist.popularity }}% )"
+        )
+        .data--block {{ artist.popularity }}% popularity

@@ -27,7 +27,7 @@ const karmaCfg = {
   configFile: __dirname + '/karma.conf.js'  
 };
 
-const APPNAME = 'template';
+const APPNAME = 'cards-player';
 const paths = {
   sass: [ './sass/main.sass', './sass/**/*.sass', './www/components/**/*.sass' ],
   pug: [ './www/index.pug', './www/components/**/*.pug', './www/includes/*.pug' ],

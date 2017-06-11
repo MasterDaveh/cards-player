@@ -1,9 +1,9 @@
-angular.module('base', ['home'])
+angular.module('base', ['home', 'spotifySrvc', 'enter'])
 
 .config(function( $locationProvider ){
   $locationProvider.html5Mode(true);
 })
 
-.run(() => {
-
+.run(function( spotify ) {
+  spotify.authorize();
 })
