@@ -1,6 +1,10 @@
 # Cards player
 > Enjoy your favorite artist's songs previews.<br>
 
+<br>
+Live demo here: https://codepen.io/masterdave/project/full/XaoyvR/
+<br>
+
 ### Testing and serving
 If you'd like to test the project locally just clone the repo, `npm install` the dependencies and run `gulp`. This will transpile the js, compile the SASS and spin up a local server at `http://localhost:3000`, serving the website in DEV mode.<br>
 If you want to test the project with a production setup just set the `env` var to 'PROD' in the index.pug file, then run `gulp build` and finally `gulp`. 
